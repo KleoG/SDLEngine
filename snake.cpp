@@ -192,22 +192,44 @@ void collisionDetection(Character &snake, Character &dot) {
 	int c2y = dot.m_GetY();			//100
 	int c2w = dot.m_GetWidth();		//20
 	int c2h = dot.m_GetHeight();	//20
-	
-	if (c1x == c2x) {
-		if (c1y == c2y) {
-			exit(-1);
-		}
-	}
-	else {
+
+	//The sides of the rectangles
+	int leftA, leftB;
+	int rightA, rightB;
+	int topA, topB;
+	int bottomA, bottomB;
+
+	//Calculate the sides of rect A
+	leftA = c1x;
+	rightA = c1x + c1w;
+	topA = c1y;
+	bottomA = c1y + c1h;
+
+	//Calculate the sides of rect B
+	leftB = c2x;
+	rightB = c2x + c2w;
+	topB = c2y;
+	bottomB = c2y + c2h;
+
+	// Checks if there is a space between the x and y axis coordinates between the two points
+	if (bottomA <= topB){
 		NULL;
 	}
-	/*
-	if (c1y + c1h > SCREEN_HEIGHT - c2h && (c1x > c2x - c2w && c1x < c2x + c2w)) {
+	else if (topA >= bottomB){
+		NULL;
+	}
+	else if (rightA <= leftB){
+		NULL;
+	}
+	else if (leftA >= rightB){
+		NULL;
+	}
+	//If none of the sides from A are outside B
+	else {
 		exit(-1);
 	}
-	*/
-	
 }
+
 
 int main(int argc, char *argv[])
 {
@@ -243,3 +265,4 @@ int main(int argc, char *argv[])
 
 	return 0;
 }
+
