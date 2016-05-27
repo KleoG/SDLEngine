@@ -174,6 +174,28 @@ void OutOfScreen(Character &character) {
 	int y = character.m_GetY();				
 	int w = character.m_GetWidth();			//20
 	int h = character.m_GetHeight();		//20
+
+	if ((x + w) > SCREEN_WIDTH || x < 0) {
+		if (x < 0) {
+			character.m_SetX(0);
+		}
+		else {
+			character.m_SetX(SCREEN_WIDTH - w);
+		}
+	}
+
+	if ((y + h) > SCREEN_HEIGHT || y < 0) {
+		if (y < 0) {
+			character.m_SetY(0);
+		}
+		else {
+			character.m_SetY(SCREEN_HEIGHT - h);
+		}
+	}
+
+
+
+	/*
 	if ((x < 0) || (x + w) > (SCREEN_WIDTH - w)) {
 		character.m_ChangeDirectionX();
 		// don't let the paddle to escape from the screen
@@ -190,6 +212,7 @@ void OutOfScreen(Character &character) {
 	if ((y + w) > SCREEN_HEIGHT && character.m_GetName() == "dot") {
 		exit(-1);
 	}
+	*/
 }
 
 bool collisionDetection(Character &snake, Character &dot) {
@@ -208,13 +231,13 @@ bool collisionDetection(Character &snake, Character &dot) {
 	int topA, topB;
 	int bottomA, bottomB;
 
-	//Calculate the sides of rect A
+	//Calculate the sides of snake
 	leftA = c1x;
 	rightA = c1x + c1w;
 	topA = c1y;
 	bottomA = c1y + c1h;
 
-	//Calculate the sides of rect B
+	//Calculate the sides of dot
 	leftB = c2x;
 	rightB = c2x + c2w;
 	topB = c2y;
@@ -280,3 +303,4 @@ int main(int argc, char *argv[])
 
 	return 0;
 }
+
