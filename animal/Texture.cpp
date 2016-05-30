@@ -181,6 +181,7 @@ void runAnimation() {
 		{
 			frame = 0;
 		}
+		SDL_Delay(25);
 
 	}
 }
