@@ -22,6 +22,9 @@ void Animal::Render() {
 void Animal::Feed() {
 }
 
+void Animal::Movement() {
+}
+
 
 Animal::~Animal()
 {

@@ -23,6 +23,8 @@ public:
 
 	void Feed();
 
+	void Movement();
+
 	~Animal();
 };
 
